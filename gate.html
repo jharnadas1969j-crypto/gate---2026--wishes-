@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission GATE 2026 | Personalized Wishes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .wish-box {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <section class="min-h-screen flex flex-col items-center justify-center relative px-6 text-center">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-700"></div>
+        </div>
+
+        <div class="z-10">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-4">Engineering Excellence</h2>
+            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tight tracking-tighter">GATE <span class="gradient-text">2026</span></h1>
+            
+            <div class="glass p-8 rounded-3xl max-w-md mx-auto mb-10 border-blue-500/20">
+                <p class="text-sm text-gray-400 mb-4 uppercase tracking-widest">Receive Your Personalized Wish</p>
+                <div class="flex flex-col gap-4">
+                    <input type="text" id="userName" placeholder="Enter Your Name..." 
+                           class="bg-white/5 border border-white/10 rounded-xl px-6 py-3 focus:outline-none focus:border-blue-500 transition-all text-center">
+                    <button onclick="generateWish()" 
+                            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 rounded-xl transition-all active:scale-95">
+                        Get My Blessing ✨
+                    </button>
+                </div>
+            </div>
+
+            <div id="wishResult" class="wish-box z-20 mb-10">
+                <h3 class="text-3xl font-bold mb-2">Hello, <span id="displayName" class="gradient-text">Aspirant</span>!</h3>
+                <p id="wishMessage" class="text-xl text-blue-200 italic max-w-lg mx-auto leading-relaxed"></p>
+            </div>
+            
+            <a href="#countdown-section" class="text-gray-500 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down animate-bounce text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="countdown-section" class="py-20 px-6 bg-[#0a101f]">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-10 text-gray-400 uppercase tracking-widest">The Final Countdown</h2>
+            <div id="countdown" class="flex flex-wrap gap-4 justify-center font-mono text-3xl md:text-5xl mb-12">
+                <div class="glass p-6 rounded-2xl min-w-[100px]">
+                    <span id="days" class="font-bold text-blue-400">00</span>
+                    <p class="text-xs uppercase text-gray-500 mt-2">Days</p>
+                </div>
+                <div class="glass p-6 rounded-2xl min-w-[100px]">
+                    <span id="hours" class="font-bold text-blue-400">00</span>
+                    <p class="text-xs uppercase text-gray-500 mt-2">Hours</p>
+                </div>
+                <div class="glass p-6 rounded-2xl min-w-[100px]">
+                    <span id="minutes" class="font-bold text-blue-400">00</span>
+                    <p class="text-xs uppercase text-gray-500 mt-2">Mins</p>
+                </div>
+                <div class="glass p-6 rounded-2xl min-w-[100px]">
+                    <span id="seconds" class="font-bold text-purple-400">00</span>
+                    <p class="text-xs uppercase text-gray-500 mt-2">Secs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="glass p-8 rounded-3xl border-white/5 hover:border-blue-500/30 transition-all">
+                <i class="fas fa-microchip text-blue-400 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-4">Focus on Logic</h3>
+                <p class="text-gray-400">GATE tests concepts, not just memory. Trust your logic and keep your basics strong.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl border-white/5 hover:border-purple-500/30 transition-all">
+                <i class="fas fa-calculator text-purple-400 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-4">Precision First</h3>
+                <p class="text-gray-400">Accuracy matters more than speed. Be careful with those Virtual Calculator entries!</p>
+            </div>
+            <div class="glass p-8 rounded-3xl border-white/5 hover:border-green-500/30 transition-all">
+                <i class="fas fa-rocket text-green-400 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-4">Future IITian</h3>
+                <p class="text-gray-400">Visualize yourself at your dream campus. You are just one exam away from a massive career shift.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center border-t border-white/10">
+        <p class="text-gray-500 uppercase tracking-widest text-xs font-bold">Good Luck Aspirants • 2026</p>
+    </footer>
+
+    <script>
+        // Personal Wish Logic
+        function generateWish() {
+            const name = document.getElementById('userName').value;
+            const wishResult = document.getElementById('wishResult');
+            const displayName = document.getElementById('displayName');
+            const wishMessage = document.getElementById('wishMessage');
+
+            if (name.trim() === "") {
+                alert("Please enter your name first!");
+                return;
+            }
+
+            const messages = [
+                "The variables of your success are perfectly aligned. Go ace it!",
+                "May your Virtual Calculator never fail and your accuracy be 100%!",
+                "From an aspirant to an IITian—your journey is almost complete. Best of luck!",
+                "May your hard work translate into a Top 100 AIR. You've got the spark!",
+                "Stay calm, stay focused. You have the heart of an engineer and the mind of a topper!"
+            ];
+
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            
+            displayName.innerText = name;
+            wishMessage.innerText = randomMsg;
+            wishResult.style.display = "block";
+
+            // Confetti Effect
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#38bdf8', '#818cf8', '#ffffff']
+            });
+        }
+
+        // Countdown Logic (Target: Feb 14, 2026 for demonstration)
+        const examDate = new Date("Feb 14, 2026 09:00:00").getTime();
+        function updateTime() {
+            const now = new Date().getTime();
+            const diff = examDate - now;
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
